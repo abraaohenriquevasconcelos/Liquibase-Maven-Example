@@ -1,0 +1,59 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>br.com.abraao</groupId>
+  <artifactId>TesteLiquibase</artifactId>
+  <packaging>war</packaging>
+  <version>0.0.1-SNAPSHOT</version>
+  <name>TesteLiquibase</name>
+
+  
+
+
+
+  <dependencies>
+  	<dependency>
+        <groupId>org.liquibase</groupId>
+        <artifactId>liquibase-core</artifactId>
+        <version>3.5.3</version>
+     </dependency>
+     
+     <dependency>
+		  <groupId>org.postgresql</groupId>
+		  <artifactId>postgresql</artifactId>
+		  <version>9.4.1208</version>
+	 </dependency>
+        
+  </dependencies>
+  
+
+  <build>  
+		<finalName>TesteLiquibase</finalName>   
+	    <plugins>
+	       <plugin>
+	           <artifactId>maven-compiler-plugin</artifactId>
+	           <configuration>
+	               <source>1.8</source>
+	               <target>1.8</target>
+	           </configuration>
+	       </plugin>
+	       <plugin>
+           		<groupId>org.liquibase</groupId>
+                <artifactId>liquibase-maven-plugin</artifactId>
+                <version>3.5.3</version>
+				<configuration>
+				 	 <!--<propertyFileWillOverride>true</propertyFileWillOverride>-->
+				 	 <propertyFile>src/main/resources/liquibase/liquibase.properties</propertyFile>
+				</configuration>
+                <executions>
+		   			<execution>
+                      <goals>
+		         	  		<goal>update</goal>
+                      </goals>
+     		   		</execution>
+                </executions>
+             </plugin>
+	   </plugins>    
+	</build>
+  
+</project>
